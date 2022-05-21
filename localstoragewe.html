@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="..accessing keys/common.css"/>
+    <style>
+       
+        #navbar{
+        margin-bottom: 50px;
+        background-color: blue;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    
+ 
+    <div id="navbar">
+        <div id="front"><a href="frontend.html">Frontend</a></div>
+        <div id="back"><a href="backend.html">Backend</a></div>
+    </div>
+
+
+   <form id="Investor">
+       <input id="imgURL" type="text" placeholder="Image"/>
+       <input id="name" type="text" placeholder="Name"/>
+       <input id="companyLogo" type="text" placeholder="Company LOgo"/>
+       <input id="role" type="text" placeholder="Role"/>
+       <input type="submit" />
+   </form>
+
+    
+</body>
+</html>
+
+<script>
+
+    document.querySelector("#Investor").addEventListener("submit",invifun);
+
+    var investorBox=JSON.parse(localStorage.getItem("InvestorData"))||[]
+    console.log(investorBox)
+
+    function invifun(){
+        event.preventDefault();
+       
+    var invastorSmallBox={
+        InvestoreImg: Investor.imgURL.value,
+        InvestoreName: Investor.name.value,
+        InvestoreLogo: Investor.companyLogo.value,
+        InvestoreRole: Investor.role.value,
+    }
+
+    investorBox.push(invastorSmallBox)
+    console.log(investorBox)
+    localStorage.setItem("InvestorData",JSON.stringify( investorBox))
+    }
+
+</script>
